@@ -50,3 +50,39 @@ Node.js v22.14.0
 to checkout more error you have t write the console.log(different error name to identify the part which have the error)
 
 
+<h1>step 6 </h1>
+
+to configure the cors 
+
+const app = express()
+
+<h3>to configure the cors use </h3>
+app.use(cors({  
+    origin : process.env.CORS_ORIGIN,
+    credentials:true  
+}))
+
+<h3>to limit the response size from the use </h3>
+app.use(express.json({limit:"16kb"}))
+
+
+<h3>every space have some meaning so to decode it use the encoder </h3>
+app.use(express.urlencoded({extended:true , limit :"16kb"}))
+
+
+<h3>it is the middle ware where When a client sends an HTTP request with cookies, they are included in the Cookie header as a string. The cookie parser takes this string and separates the individual cookie name-value pairs.  </h3>
+app.use(cookieParser()) ; 
+
+
+<h2>what is the middleware </h2>
+middleware is the interaction of the system in between the respose said to be middleweare they 
+have 4 tupple 
+(err, req ,res ,next) 
+what is next -> next is the while interaction they will check the authentication , check weather it is admin or not many more thing we can check so it is the hop to htp communication while doing task it will move from onw to another 
+
+at last they get the response  
+  ->>
+app.get('/insta' , (req, res)=>{
+  res.send("hey i am available")
+})
+

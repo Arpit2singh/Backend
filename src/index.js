@@ -8,9 +8,17 @@ dotenv.config({
     path : ".env"
 })
 
-
-DBLogic() ; 
 const app = express() ; 
+DBLogic().then(
+     app.listen(process.env.PORT , ()=>{
+       console.log(`app is listenn on the port ${process.env.PORT}`)
+     })
+)
+.catch((error)=>{
+    console.log(error)
+    }
+)
+
 
 
 // app.get('./' , (req,res)=>{
