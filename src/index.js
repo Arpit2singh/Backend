@@ -3,7 +3,7 @@ import express from "express" ;
 
 import dotenv from "dotenv"
 import DBLogic from "./db/db.js"; 
-
+import app from "./app.js";
 
 
 dotenv.config({
@@ -12,7 +12,7 @@ dotenv.config({
 
 
 
-const app = express() ; 
+// const app = express() ; 
 DBLogic().then(
      app.listen(process.env.PORT , ()=>{
        console.log(`app is listenn on the port ${process.env.PORT}`)
