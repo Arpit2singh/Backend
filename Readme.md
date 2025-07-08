@@ -86,3 +86,18 @@ app.get('/insta' , (req, res)=>{
   res.send("hey i am available")
 })
 
+<h1> video 11 </h1>
+
+fs.unsynclink help us to remove the temp file wich is not uploaded or some error is occured 
+
+before intalizing the cloudinary you have to configure the cloudinary  ,  
+then by we use t he async function , 
+
+Multer is a middleware function in Node.js, meaning it sits between the request and the response, intercepting and processing data, in this case, file uploads.  
+Multer is a middleware function in Node.js, meaning it sits between the request and the response, intercepting and processing data, in this case, file uploads. 
+
+          request        middleware                     function 
+app.post('/profile', upload.single('avatar'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+})
