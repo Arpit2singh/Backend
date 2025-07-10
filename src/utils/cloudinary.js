@@ -15,17 +15,19 @@ CLOUDINARY_API_SECRET ,// Click 'View API Keys' above to copy your API secret
         try {
             
             if(!localPath) return null ; 
+
           const response = await  cloudinary.uploader.upload(localPath,
                  {
                  resource_type : "auto"
                  })
          console.log("file is uploaded " ,response.url);
-
+              
          return response ;
             
         } catch (error) {
-            
-            fs.unlinkSync(localPath) // remove the locally saved temprory file as the upload operation is failed in between or pre 
+           
+            fs.unlinkSync(localPath) 
+              return -1 ; // remove the locally saved temprory file as the upload operation is failed in between or pre 
         }
     }
 
