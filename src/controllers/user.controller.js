@@ -52,7 +52,9 @@ if (existedUser) {
    console.log(req.files);
 
    const avatarLocalPath = req.files?.avatar[0]?.path;
-   const coverImageLocalPath =  req.files?.coverImage[0]?.path ;
+   let coverImageLocalPath ; 
+
+   if()
   
 
 
@@ -62,6 +64,7 @@ console.log(avatarLocalPath)
    if(!avatarLocalPath){
       throw new ApiError(400 , "Avatar file is required avatarlocalpath") ; 
    }
+   
 
 
   const avatar = await uploadonCloudinary(avatarLocalPath) ; 
