@@ -6,10 +6,7 @@ import bcrypt from "bcrypt" ;
 
 
 const userSchema = new mongoose.Schema({
-   id : {
-      type : String ,
-     
-   },
+  
    watchHistory : {
       type : mongoose.Schema.Types.ObjectId , 
       ref :  "Videos" , 
@@ -78,7 +75,7 @@ userSchema.methods.isPasswordCorrect = async function (password){
 userSchema.methods.generateAcessToken = function(){
    return  jwt.sign(
         {
-            id :this.id ,
+            id :this._id ,
             email : this.email ,
             username : this.username , 
             fullname : this.fullname ,
@@ -94,7 +91,7 @@ userSchema.methods.generateAcessToken = function(){
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
-              id : this.id ,
+              id : this._id ,
         },
        process.env.REFRESH_TOKEN_SECRET ,
        {

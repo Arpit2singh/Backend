@@ -20,13 +20,13 @@ const registerUser = asyncHandler(async (req, res) => {
     // check for user creation
     // return re
 
-   const { userName, email, password, fullName } = req.body;
-   console.log(userName)
+   const { username, email, password, fullname } = req.body;
+   console.log(username)
    console.log(email)
    console.log(password)
-   console.log(fullName)
+   console.log(fullname)
 
-   if (userName === "") {
+   if (username === "") {
       throw new ApiError(101, "userName is empty ")
    }
    if (email === "") {
@@ -35,23 +35,24 @@ const registerUser = asyncHandler(async (req, res) => {
    if (password === "") {
       throw new ApiError(101, "password is empty ")
    }
-   if (fullName === "") {
+   if (fullname === "") {
       throw new ApiError(101, "fullName is empty ")
    }
 
    const existedUser = await User.findOne({
-      $or : [{userName} ,{email}] 
+      $or : [{username} ,{email}] 
    })
-   if(existedUser){
-      throw new ApiError(409 , "user not exist")
-   }
-   else{
-      console.log("user exists") ; 
-   }
+
+if (existedUser) {
+   throw new ApiError(409, "User already exists");
+} else {
+   console.log("User does not exist. Proceeding...");
+}
+
    console.log(req.files);
 
    const avatarLocalPath = req.files?.avatar[0]?.path;
-   const coverImageLocalPath = req.files?.coverImage[0]?.path ;
+   const coverImageLocalPath =  req.files?.coverImage[0]?.path ;
   
 
 
@@ -77,11 +78,11 @@ console.log(avatarLocalPath)
 //   }
 
 const user = await User.create({
-  userName,
+  username,
   email,
   password,
-  fullName,
-  avatar: avatar?.url,
+  fullname,
+  avatar: avatar.url,
   coverImage: coverImage?.url || "",
 })
 
